@@ -8,7 +8,7 @@ namespace Lab1
 {
     static internal class Caesar
     {
-        /*public static char cipher(char ch, int key)
+        public static char cipher(char ch, int key)
         {
             if (!char.IsLetter(ch))
             {
@@ -22,15 +22,16 @@ namespace Lab1
 
         }
 
-        public static string Encryption (string input, int key)
+        public static string Encryption(string input, int key)
         {
             string output = string.Empty;
 
-            foreach(char ch in input)
+            foreach (char ch in input)
             {
                 output += cipher(ch, key);
             }
 
-        }*/
+            return output;  
+        }
     }
 }
