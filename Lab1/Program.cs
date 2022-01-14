@@ -14,7 +14,6 @@ namespace Lab1
     internal class Program
     {
 
-
         static string text1 = "7958401743454e1756174552475256435e59501a5c524e176f786517545e475f5245191772195019175e43174" +
             "45f58425b531743565c521756174443455e595017d5b7ab5f525b5b58174058455b53d5b7aa175659531b17505e41525917435f52175c" +
             "524e175e4417d5b7ab5c524ed5b7aa1b174f584517435f5217515e454443175b524343524517d5b7ab5fd5b7aa17405e435f17d5b7ab5c" +
@@ -27,34 +26,45 @@ namespace Lab1
         static void Main(string[] args)
         {
 
-            byte[] repeatingkey = Encoding.ASCII.GetBytes("77");
+            byte[] repeatingkey = Encoding.ASCII.GetBytes("L0l");
 
             byte[] array2 = System.Convert.FromBase64String(text2);
             Task1(55);
-            
-            for (int i = 1; i < 256; i++)
+
+           /* for (int i = 1; i < 256; i++)
             {
                 for (int j = 0; j < 132; j++)
                 {
                     byte[] check = new byte[2];
                     check[0] = (byte)(i);
-                    check[1] = (byte)(j);
-                    byte[] input = RepeatingKeyXor(array2, check);
+                    check[1] = (byte)(j);*/
+                    
+                  /*  Console.WriteLine(result);
+            Console.WriteLine(i);
+            Console.WriteLine(j);
+            Thread.Sleep(500);*/
+            /*       }
+               }*/
 
-
-                    string result = Encoding.ASCII.GetString(input);
-                    Console.WriteLine(result);
-                    Console.WriteLine(i);
-                    Console.WriteLine(j);
-                    Thread.Sleep(500);
-                }
-            }
             /*int size = GetKeylenght(array2);
             Console.WriteLine(size);*/
+            byte[] input = RepeatingKeyXor(array2, repeatingkey);
 
+
+            string result = Encoding.ASCII.GetString(input);
+            int dif = '5'-'i';
+            int dif2 = '9' - 'e';
+            int dif3 = '8' - 'd';
+            Console.WriteLine(result);
+            //string q = "77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777";
+            //Console.WriteLine(q.Length);
+           /* Console.WriteLine(dif);
+            Console.WriteLine(dif2);
+            Console.WriteLine(dif3);*/
         }
         static byte[] SingeByteXor(byte[] bytes, int key)
         {
+            //xor cipher
             byte[] bytes2 = new byte[bytes.Length];
 
             for (int i = 0; i < bytes.Length; i++)
@@ -67,6 +77,7 @@ namespace Lab1
         }
         static byte[] StringToByte(string text1)
         {
+            // строки к байту
             var bytes = new byte[text1.Length / 2];
             for (int i = 0; i < text1[text1.Length / 2]; i++)
             {
@@ -81,7 +92,7 @@ namespace Lab1
         }
         static byte[] RepeatingKeyXor(byte[] bytes, byte[] key)
         {
-
+            //xor cipher 2
             byte[] array = new byte[bytes.Length];
             for (int i = 0; i < bytes.Length; i++)
             {
@@ -151,6 +162,51 @@ namespace Lab1
             return distance;
 
         }
+        /*static string GetKey(byte[][] blocks)
+        {
+            string common = "ETAOIN SHRDLU", key = "";
+            foreach (byte[] str in blocks)
+            {
+                int current_high_score = 0;
+                char current_key_char = ' ';
+                int[] arr;
+                for (int i = 0, j = 0; i < 127; i++, j = 0)
+                {
+                    arr = new int[str.Length];
+                    foreach (char letter in str)
+                    {
+                        arr[j] = i ^ letter;
+                        j++;
+                    }
+
+                    string? convertedString = ConvertToString(arr);
+                    Console.WriteLine(convertedString);
+
+                    if (convertedString is not null)
+                    {
+                        int score = 0;
+                        foreach (char letter1 in convertedString.ToUpper())
+                        {
+                            foreach (char letter2 in common)
+                            {
+                                if (letter1 == letter2)
+                                {
+                                    score++;
+                                }
+                            }
+                        }
+
+                        if (score > current_high_score)
+                        {
+                            current_high_score = score;
+                            current_key_char = (char)j;
+                        }
+                        key += current_key_char;
+                    }
+                }
+            }
+            return key;
+        }*/
 
     }
 }
